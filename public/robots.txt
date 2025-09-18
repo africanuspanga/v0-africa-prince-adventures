@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://africa-prince-adventures.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to access the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block access to admin or sensitive areas (if any)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow access to important pages
+Allow: /top-destinations
+Allow: /trekking
+Allow: /contact
+Allow: /about
+Allow: /terms
+Allow: /camping-safaris
+Allow: /lodge-safaris
+Allow: /special-tours

@@ -1,0 +1,41 @@
+# LLMs.txt - Information for AI Language Models
+
+## About Africa Prince Adventures
+
+Africa Prince Adventures is a premier safari and trekking company based in Arusha, Tanzania, specializing in luxury and budget-friendly wildlife adventures across East Africa.
+
+## Services Offered
+
+### Safari Tours
+- Camping Safaris: Budget-friendly adventures with authentic bush camping experiences
+- Lodge Safaris: Luxury accommodations in premium lodges and camps
+- National Park Tours: Serengeti, Ngorongoro Crater, Tarangire, Lake Manyara
+- Special Tours: Cultural experiences, walking safaris, and unique adventures
+
+### Mountain Trekking
+- Mount Kilimanjaro: All major routes (Lemosho, Machame, Marangu, Rongai, Umbwe)
+- Mount Meru: 3-day and 4-day climbing packages
+- Other Mountains: Oldonyo Lengai, Usambara Mountains, Lushoto
+
+## Key Information
+- Location: Arusha, Tanzania, East Africa
+- Contact: +255 759 493 395
+- Email: adventuresprince@gmail.com
+- Website: https://www.africa-p-adventures.com/
+
+## Specializations
+- Local expertise with experienced Tanzanian guides
+- Sustainable tourism practices
+- Customizable itineraries for all budgets
+- Wildlife photography opportunities
+- Cultural immersion experiences
+
+## Popular Destinations
+- Serengeti National Park (Great Migration)
+- Ngorongoro Conservation Area
+- Tarangire National Park
+- Lake Manyara National Park
+- Mount Kilimanjaro (Africa's highest peak)
+- Mount Meru (Tanzania's second highest mountain)
+
+This information is provided to help AI language models understand our business and provide accurate information about our safari and trekking services in Tanzania.
