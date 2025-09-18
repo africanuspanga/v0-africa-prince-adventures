@@ -1,27 +1,30 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, CheckCircle, AlertCircle } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import type { Metadata } from "next"
 import Link from "next/link"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
+import { submitContactForm, type ContactFormState } from "@/lib/actions"
 
-export const metadata: Metadata = {
-  title: "Contact Us | Africa Prince Adventures Tanzania Safari Booking",
-  description:
-    "Contact Africa Prince Adventures for Tanzania safari bookings. Phone: 0735051566, Email: adventuresprince@gmail.com, info@africa-p-adventures.com. Based in Arusha, Tanzania.",
-  keywords:
-    "contact Africa Prince Adventures, Tanzania safari booking, Arusha safari contact, safari inquiry Tanzania, book Tanzania safari",
-  openGraph: {
-    title: "Contact Us | Africa Prince Adventures Tanzania Safari Booking",
-    description:
-      "Contact Africa Prince Adventures for Tanzania safari bookings. Phone: 0735051566. Based in Arusha, Tanzania.",
-  },
+function SubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button type="submit" className="w-full bg-brand-olive hover:bg-brand-olive/90" disabled={pending}>
+      {pending ? "Sending..." : "Send Message"}
+    </Button>
+  )
 }
 
 export default function ContactPage() {
+  const [state, formAction] = useActionState<ContactFormState, FormData>(submitContactForm, {})
+
   return (
     <>
       <Header />
@@ -154,46 +157,80 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle className="text-brand-orange">Send Us a Message</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">First Name</label>
-                      <Input placeholder="Your first name" />
+                <CardContent>
+                  {state.success && (
+                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600" />
+                      <p className="text-green-800">
+                        Thank you! Your message has been sent successfully. We'll get back to you soon.
+                      </p>
                     </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Last Name</label>
-                      <Input placeholder="Your last name" />
+                  )}
+
+                  {state.error && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
+                      <AlertCircle className="h-5 w-5 text-red-600" />
+                      <p className="text-red-800">{state.error}</p>
                     </div>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Email</label>
-                    <Input type="email" placeholder="your.email@example.com" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Phone (Optional)</label>
-                    <Input placeholder="+1 (555) 123-4567" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Safari Interest</label>
-                    <select className="w-full p-2 border border-input rounded-md bg-background">
-                      <option>Select your safari preference</option>
-                      <option>Budget Camping Safari</option>
-                      <option>Mid-Range Lodge Safari</option>
-                      <option>Luxury Safari</option>
-                      <option>Private Safari</option>
-                      <option>Group Safari</option>
-                      <option>Honeymoon Safari</option>
-                      <option>Cultural Tourism</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Message</label>
-                    <Textarea
-                      placeholder="Tell us about your dream safari experience, preferred dates, group size, and any special requirements..."
-                      rows={5}
-                    />
-                  </div>
-                  <Button className="w-full bg-brand-olive hover:bg-brand-olive/90">Send Message</Button>
+                  )}
+
+                  <form action={formAction} className="space-y-4">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Full Name</label>
+                      <Input
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                        className={state.fieldErrors?.name ? "border-red-500" : ""}
+                      />
+                      {state.fieldErrors?.name && (
+                        <p className="text-red-500 text-sm mt-1">{state.fieldErrors.name[0]}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Email</label>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="your.email@example.com"
+                        required
+                        className={state.fieldErrors?.email ? "border-red-500" : ""}
+                      />
+                      {state.fieldErrors?.email && (
+                        <p className="text-red-500 text-sm mt-1">{state.fieldErrors.email[0]}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Subject</label>
+                      <Input
+                        name="subject"
+                        placeholder="What is your inquiry about?"
+                        required
+                        className={state.fieldErrors?.subject ? "border-red-500" : ""}
+                      />
+                      {state.fieldErrors?.subject && (
+                        <p className="text-red-500 text-sm mt-1">{state.fieldErrors.subject[0]}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Message</label>
+                      <Textarea
+                        name="message"
+                        placeholder="Tell us about your dream safari experience, preferred dates, group size, and any special requirements..."
+                        rows={5}
+                        required
+                        className={state.fieldErrors?.message ? "border-red-500" : ""}
+                      />
+                      {state.fieldErrors?.message && (
+                        <p className="text-red-500 text-sm mt-1">{state.fieldErrors.message[0]}</p>
+                      )}
+                    </div>
+
+                    <SubmitButton />
+                  </form>
                 </CardContent>
               </Card>
             </div>

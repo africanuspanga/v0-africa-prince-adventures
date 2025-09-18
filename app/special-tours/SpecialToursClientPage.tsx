@@ -97,7 +97,7 @@ export default function SpecialToursClientPage() {
               Let us create a personalized itinerary that matches your interests and budget. Contact us today to start
               planning your dream Tanzania experience.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button
                 size="lg"
                 variant="secondary"
@@ -106,13 +106,6 @@ export default function SpecialToursClientPage() {
               >
                 Get Custom Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-brand-olive bg-transparent"
-              >
-                View All Tours
               </Button>
             </div>
           </div>

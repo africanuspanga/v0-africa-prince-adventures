@@ -1,7 +1,8 @@
 "use client"
 
 import React from "react"
-import { useFormState, useFormStatus } from "react-dom"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -34,7 +35,7 @@ export function BookingForm({
   onClose,
 }: BookingFormProps) {
   const initialState: BookingFormState = {}
-  const [state, formAction] = useFormState(submitBookingForm, initialState)
+  const [state, formAction] = useActionState(submitBookingForm, initialState)
 
   React.useEffect(() => {
     if (state.success) {

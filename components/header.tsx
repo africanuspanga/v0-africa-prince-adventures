@@ -66,11 +66,11 @@ export function Header() {
                 TREKKING
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64 z-[60]" sideOffset={5}>
+              <DropdownMenuContent align="start" className="w-64 z-[100]" sideOffset={5}>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="cursor-pointer">Kilimanjaro</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent
-                    className="w-56 z-[70] bg-white border border-gray-200 shadow-lg"
+                    className="w-56 z-[110] bg-white border border-gray-200 shadow-lg"
                     sideOffset={2}
                     alignOffset={-5}
                     avoidCollisions={true}
@@ -107,7 +107,7 @@ export function Header() {
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger className="cursor-pointer">Mt Meru</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent
-                    className="w-56 z-[70] bg-white border border-gray-200 shadow-lg"
+                    className="w-56 z-[110] bg-white border border-gray-200 shadow-lg"
                     sideOffset={2}
                     alignOffset={-5}
                     avoidCollisions={true}

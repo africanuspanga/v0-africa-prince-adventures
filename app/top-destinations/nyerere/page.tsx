@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
+import { ArrowLeft } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Nyerere National Park Safari | The Wild Heart of the South - Africa Prince Adventures",
@@ -22,6 +23,18 @@ export default function NyererePage() {
     <>
       <Header />
       <main>
+        <div className="bg-muted/30 py-4">
+          <div className="container mx-auto px-4">
+            <a
+              href="/top-destinations"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Destinations
+            </a>
+          </div>
+        </div>
+
         {/* Hero Section */}
         <div
           className="relative h-[70vh] bg-cover bg-center bg-no-repeat"
